@@ -8,18 +8,16 @@ from PIL import Image, ImageChops, ImageEnhance
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array, load_img
 
-os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
-
 def select_model(model_name):
     if model_name == 'InceptionResnetv2':
         detection_model = load_model('deepfake-detection-model-inceptionresnetv2.h5')
+        return detection_model
     elif model_name == 'VGG16':
         detection_model = load_model('deepfake-detection-model-vgg.h5')
+        return detection_model
     else:
         return "An Error Occurred!!!"
-    return detection_model
-
-model = select_model(model_name = 'VGG16')
+    # return detection_model
 
 def prediction(model,video_path):
     input_shape = (128, 128, 3)

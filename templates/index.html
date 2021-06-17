@@ -6,12 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    This is my application.{{result}}
-    <form action="upload">
-        <input type="file" id="myFile" name="filename">
-        <input type="submit">
-    </form>
-      
+    <form action = "/predict" method = "GET">
+       <input id="text" name="model">
+       <input type="submit" value="Submit">
+    </form>  
 </body>
 </html>
