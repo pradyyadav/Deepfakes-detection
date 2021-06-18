@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-    <form action = "/predict" method = "GET">
+<body>
+    <!-- <form action = "/predict" method = "POST">
        <input id="text" name="model">
        <input type="submit" value="Submit">
-    </form>  
+    </form>   -->
+
+    <form method='POST' action='/predict' id='model'>
+        Select MODEL : <select name='model' onchange='submitForm();'> 
+         <option value='InceptionResnetv2'>InceptionResnetv2</option> 
+         <option value='VGG16'>VGG16</option>
+        </select> 
+        <input type="submit" value="Submit">
+    </form>
 </body>
-</html>
+</html> 
