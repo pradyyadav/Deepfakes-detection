@@ -12,12 +12,16 @@
        <input type="submit" value="Submit">
     </form>   -->
 
-    <form method='POST' action='/predict' id='model'>
-        Select MODEL : <select name='model' onchange='submitForm();'> 
+    <form method='POST' action='/predict' id='action'>
+        Select MODEL and VIDEO : <select name='model' onchange='submitForm();'> 
          <option value='InceptionResnetv2'>InceptionResnetv2</option> 
          <option value='VGG16'>VGG16</option>
+
+         <label for="file">Select a file:</label>
+        <input type="file" id="video" name="video"><br><br>
         </select> 
         <input type="submit" value="Submit">
-    </form>
+    </form> 
+      
 </body>
 </html> 

@@ -1,6 +1,5 @@
 import os
 from flask import Flask, request, jsonify, render_template
-import models
 from models import select_model
 from models import prediction
 
@@ -18,11 +17,12 @@ def predict():
     if request.method == 'GET':
         return f"the predict is accessed directly, go to /"
     if request.method == 'POST':
-        os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
-        model = request.form
-        model = request.form.to_dict(model)
-        model = select_model(model['model'])
-        result = prediction(model,'test_videos/aomqqjipcp.mp4')
+        os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'    
+        action = request.form
+        action = request.form.to_dict()
+        model = select_model(action['model'])
+        video = os.path.join('test_videos',action['video'])
+        result = prediction(model,video)
         return render_template('predict.html',form = result)
 
 if __name__  ==  "__main__":        

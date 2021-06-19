@@ -12,9 +12,11 @@ os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'
 
 def select_model(model_name):
     if model_name == 'InceptionResnetv2':
-        detection_model = load_model('deepfake-detection-model-inceptionresnetv2.h5')
+        print("using inception")
+        detection_model = load_model('detection_models/deepfake-detection-model-vgg.h5')
     elif model_name == 'VGG16':
-        detection_model = load_model('deepfake-detection-model-vgg.h5')
+        print("using vgg")
+        detection_model = load_model('detection_models/deepfake-detection-model-vgg.h5')
     else:
         return "An Error Occurred!!!"
     return detection_model
@@ -41,7 +43,3 @@ def prediction(model,video_path):
                 data = img_to_array(cv2.resize(crop_img, (128, 128))).flatten() / 255.0
                 data = data.reshape(-1, 128, 128, 3)
                 return np.argmax(model.predict(data))
-
-
-mod = select_model('InceptionResnetv2')
-print(prediction(mod,'test_videos/aomqqjipcp.mp4'))
