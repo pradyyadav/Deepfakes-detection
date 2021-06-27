@@ -18,7 +18,7 @@ def select_model(model_name):
         print("using vgg")
         detection_model = load_model('detection_models/deepfake-detection-model-vgg.h5')
     else:
-        return "An Error Occurred!!!"
+        print("An Error Occurred!!!")
     return detection_model
 
 def prediction(model,video_path):
@@ -43,3 +43,7 @@ def prediction(model,video_path):
                 data = img_to_array(cv2.resize(crop_img, (128, 128))).flatten() / 255.0
                 data = data.reshape(-1, 128, 128, 3)
                 return np.argmax(model.predict(data))
+
+
+model = select_model('VGG16')
+print(prediction(model,'./test_videos/dgmevclvzy.mp4'))

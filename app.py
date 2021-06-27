@@ -17,12 +17,14 @@ def predict():
     if request.method == 'GET':
         return f"the predict is accessed directly, go to /"
     if request.method == 'POST':
+        result = []
         os.environ['TF_FORCE_GPU_ALLOW_GROWTH'] = 'true'    
         action = request.form
         action = request.form.to_dict()
         model = select_model(action['model'])
         video = os.path.join('test_videos',action['video'])
-        result = prediction(model,video)
+        result.append(prediction(model,video))
+        print(result)
         return render_template('predict.html',form = result)
 
 if __name__  ==  "__main__":        
