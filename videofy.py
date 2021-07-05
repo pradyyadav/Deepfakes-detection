@@ -1,3 +1,5 @@
+"""This code forms a video out of the collection of images"""
+
 import os
 import cv2
 
