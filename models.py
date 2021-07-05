@@ -45,5 +45,5 @@ def prediction(model,video_path):
                 return np.argmax(model.predict(data))
 
 
-model = select_model('VGG16')
-print(prediction(model,'./test_videos/dgmevclvzy.mp4'))
+# model = select_model('VGG16')
+# print(prediction(model,'./test_videos/dgmevclvzy.mp4'))
